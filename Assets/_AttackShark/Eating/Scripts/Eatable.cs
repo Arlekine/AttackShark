@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Eatable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int _growPoints;
 
-    // Update is called once per frame
-    void Update()
+    public int GrowPoints => _growPoints;
+
+    public void Deactivate()
     {
-        
+        GetComponent<Collider>().enabled = false;
     }
 }
