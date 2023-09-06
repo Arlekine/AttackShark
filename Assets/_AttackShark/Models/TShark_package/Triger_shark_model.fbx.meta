@@ -1,0 +1,122 @@
+fileFormatVersion: 2
+guid: 4af34a33ec7f58d479004bdcf58aaa07
+timeCreated: 1425648152
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Anal_fin
+    100002: Body
+    100004: Caudal_fin_1
+    100006: Caudal_fin_2
+    100008: Caudal_fin_3
+    100010: Caudal_fin_4
+    100012: Caudal_fin_5
+    100014: Chest
+    100016: Dorsal_fin_1
+    100018: Dorsal_fin_2
+    100020: Dorsal_fin_back
+    100022: Group45583_001
+    100024: Head
+    100026: Jaw
+    100028: Pectoral_fin_1_L
+    100030: Pectoral_fin_1_R
+    100032: Pectoral_fin_2_L
+    100034: Pectoral_fin_2_R
+    100036: Pelvic_fin_L
+    100038: Pelvic_fin_R
+    100040: Root
+    100042: Snout
+    100044: Tail_1
+    100046: Tail_2
+    100048: Tail_3
+    100050: Tiger_shark
+    100052: //RootNode
+    400000: Anal_fin
+    400002: Body
+    400004: Caudal_fin_1
+    400006: Caudal_fin_2
+    400008: Caudal_fin_3
+    400010: Caudal_fin_4
+    400012: Caudal_fin_5
+    400014: Chest
+    400016: Dorsal_fin_1
+    400018: Dorsal_fin_2
+    400020: Dorsal_fin_back
+    400022: Group45583_001
+    400024: Head
+    400026: Jaw
+    400028: Pectoral_fin_1_L
+    400030: Pectoral_fin_1_R
+    400032: Pectoral_fin_2_L
+    400034: Pectoral_fin_2_R
+    400036: Pelvic_fin_L
+    400038: Pelvic_fin_R
+    400040: Root
+    400042: Snout
+    400044: Tail_1
+    400046: Tail_2
+    400048: Tail_3
+    400050: Tiger_shark
+    400052: //RootNode
+    4300000: Group45583_001
+    9500000: //RootNode
+    13700000: Group45583_001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

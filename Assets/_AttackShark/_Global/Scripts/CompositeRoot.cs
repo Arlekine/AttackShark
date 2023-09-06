@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class CompositeRoot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Shark")]
+    [SerializeField] private SharkMove _sharkMove;
+    [SerializeField] private SharkJoystickInput _sharkInput;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        _sharkMove.Init(_sharkInput);
     }
 }
