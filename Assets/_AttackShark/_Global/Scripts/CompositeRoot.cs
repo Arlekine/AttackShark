@@ -5,11 +5,12 @@ using UnityEngine;
 public class CompositeRoot : MonoBehaviour
 {
     [Header("Shark")]
-    [SerializeField] private SharkMove _sharkMove;
+    [SerializeField] private SharkRoot _shark;
     [SerializeField] private SharkJoystickInput _sharkInput;
+    [SerializeField] private CameraControl _cameraControl;
 
     private void Start()
     {
-        _sharkMove.Init(_sharkInput);
+        _shark.Init(_cameraControl, _sharkInput);
     }
 }
