@@ -461,6 +461,9 @@ GameObject:
   - component: {fileID: 8852138573264975133}
   - component: {fileID: -3537837962846971133}
   - component: {fileID: 5876823392355286800}
+  - component: {fileID: -8742110932029112289}
+  - component: {fileID: 6054614895789886869}
+  - component: {fileID: 6829519379364398226}
   m_Layer: 7
   m_Name: aimara
   m_TagString: Untagged
@@ -477,8 +480,8 @@ Transform:
   m_GameObject: {fileID: 1969186325986784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4779094063542080}
   - {fileID: 4109257728686760}
@@ -512,9 +515,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationLerpParameter: 1
   _size: 1
+  _fishLevel: 2
+  _runawayDistance: 1
   _obstaclesLayer:
     serializedVersion: 2
     m_Bits: 192
+  _runAwayTrigger: {fileID: 6054614895789886869}
+  _minSpeed: 0.5
+  _maxSpeed: 0.7
 --- !u!95 &8852138573264975133
 Animator:
   serializedVersion: 5
@@ -561,5 +569,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c088ec62f5390ab4bbe73436f3126ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 6ddd8cc5864f68e429875af885e77db8, type: 2}
   _fishMovement: {fileID: 114356210199341876}
   _eatable: {fileID: -3537837962846971133}
+--- !u!114 &-8742110932029112289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969186325986784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6727cc0a226fc438410578393d45a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: 2
+--- !u!114 &6054614895789886869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969186325986784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d303f0f3de5095548b538a5b47e97748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &6829519379364398226
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969186325986784}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0

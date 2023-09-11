@@ -14,34 +14,45 @@ namespace FreshwaterFish
 
 		[SerializeField] private float _rotationLerpParameter = 1f;
         [SerializeField] private float _size = 1f;
+        [SerializeField] private float _fishLevel = 1f;
+        [SerializeField] private float _runawayDistance = 10f;
         [SerializeField] private LayerMask _obstaclesLayer;
+        [SerializeField] private RunAwayTrigger _runAwayTrigger;
+
+        [Header("Speed")]
+        [Range(0f, 5f)] [SerializeField] private float _minSpeed = 0.1f;
+        [Range(0f, 5f)] [SerializeField] private float _maxSpeed = 0.2f;
 
         private float _speed;
-        private float _minSpeed;
-        private float _maxSpeed;
 
+        private Rigidbody _rigidbody;
         private SwimZone _swimZone;
         private Vector3 _goalPosition;
         private List<FishMovement> _shoal;
+        private List<FishHazard> _currentHazards = new List<FishHazard>();
+        private List<FishCollider> _currentColliders = new List<FishCollider>();
 
         public Action GoalReached;
         public Action<FishMovement> Destroyed;
 
-		public void Init(float minSpeed, float maxSpeed, SwimZone swimZone)
-        {
-            _minSpeed = minSpeed;
-            _maxSpeed = maxSpeed;
+        public float FishLevel => _fishLevel;
 
-            _speed = Random.Range(_minSpeed, _maxSpeed);
+        public void Init(SwimZone swimZone)
+        {
+            var progress = Mathf.InverseLerp(0, 4, _size);
+            var mod = Mathf.Lerp(1, 2, progress);
+
+            _speed = Random.Range(_minSpeed * mod, _maxSpeed * mod);
             _swimZone = swimZone;
-		}
+            _rigidbody = GetComponent<Rigidbody>();
+        }
 
         public void SetShoal(List<FishMovement> fishes)
         {
             _shoal = fishes;
         }
 
-		private void Update()
+		private void FixedUpdate()
 		{
             var goalDistance = Vector3.Distance(this.transform.position, _goalPosition);
 			if (goalDistance < GoalReachDistance)
@@ -50,24 +61,88 @@ namespace FreshwaterFish
 			}
 
             Vector3 localAvoidance = CalculateShoalAvoidance();
+
+            //_goalPosition = CalculateObstacleAvoidance(_goalPosition);
+
+            var additionalSpeed = 0f;
+            
+            if (HasRealHazard())
+            {
+                var hazardsCenter = GetHazardCenter();
+                var directionFromHazards = (transform.position - hazardsCenter).normalized;
+                _goalPosition = transform.position + directionFromHazards * _runawayDistance;
+                _goalPosition.y = _swimZone.ClampYForPosition(_goalPosition);
+
+                additionalSpeed = _speed;
+            }
+
+            //BalanceHeight();
+
             Vector3 direction = _goalPosition + localAvoidance - this.transform.position;
 
-            _goalPosition = CalculateObstacleAvoidance(_goalPosition);
-            BalanceHeight();
+            _rigidbody.MovePosition(transform.position + transform.forward * Time.deltaTime * (_speed + additionalSpeed));
+            _rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), _rotationLerpParameter * Time.deltaTime));
 
-			if (Random.Range(0f, 1f) < 0.01f)
-			{
-				_speed = Random.Range(_minSpeed, _maxSpeed);
-			}
+            /*transform.Translate(0, 0, Time.deltaTime * (_speed + additionalSpeed));
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), _rotationLerpParameter * Time.deltaTime);*/
 
-			transform.Translate(0, 0, Time.deltaTime * _speed);
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), _rotationLerpParameter * Time.deltaTime);
-
-            if (transform.position.y > _goalPosition.y)
+            /*if (transform.position.y > _goalPosition.y)
 			{
 				transform.Translate(Vector3.down * 0.1f * Time.deltaTime);
-			}
+			}*/
 		}
+
+        private void OnEnable()
+        {
+            _runAwayTrigger.TriggerEnter += AddHazard;
+            _runAwayTrigger.TriggerExit += RemoveHazard;
+        }
+
+        private void OnDisable()
+        {
+            _runAwayTrigger.TriggerEnter -= AddHazard;
+            _runAwayTrigger.TriggerExit -= RemoveHazard;
+        }
+
+        private void AddHazard(FishHazard hazard)
+        {
+            _currentHazards.Add(hazard);
+        }
+
+        private void RemoveHazard(FishHazard hazard)
+        {
+            _currentHazards.Remove(hazard);
+        }
+
+        private Vector3 GetHazardCenter()
+        {
+            var totalX = 0f;
+            var totalY = 0f;
+            var totalZ = 0f;
+
+            foreach (var unit in _currentHazards)
+            {
+                totalX += unit.transform.position.x;
+                totalY += unit.transform.position.y;
+                totalZ += unit.transform.position.z;
+            }
+            var centerX = totalX / _currentHazards.Count;
+            var centerY = totalY / _currentHazards.Count;
+            var centerZ = totalZ / _currentHazards.Count;
+
+            return new Vector3(centerX, centerY, centerZ);
+        }
+
+        private bool HasRealHazard()
+        {
+            foreach (var currentHazard in _currentHazards)
+            {
+                if (currentHazard.HazardLevel >= _fishLevel)
+                    return true;
+            }
+
+            return false;
+        }
 
         private void OnDestroy()
         {
@@ -136,5 +211,5 @@ namespace FreshwaterFish
 		{
 			_goalPosition = position;
         }
-	}	
+    }	
 }

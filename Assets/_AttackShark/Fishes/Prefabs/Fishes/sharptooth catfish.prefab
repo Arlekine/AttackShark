@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 114353774249558612}
   - component: {fileID: -4641914176930461134}
   - component: {fileID: 108512047198552524}
+  - component: {fileID: -6891580097041935352}
+  - component: {fileID: -440158791159061764}
+  - component: {fileID: -7534424165026364928}
   m_Layer: 7
   m_Name: sharptooth catfish
   m_TagString: Untagged
@@ -30,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 1012506264795700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4436700102131200}
   - {fileID: 4554973112895696}
@@ -86,9 +89,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationLerpParameter: 1
   _size: 1
+  _fishLevel: 3
+  _runawayDistance: 1
   _obstaclesLayer:
     serializedVersion: 2
     m_Bits: 192
+  _runAwayTrigger: {fileID: -440158791159061764}
+  _minSpeed: 0.5
+  _maxSpeed: 0.7
 --- !u!114 &-4641914176930461134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,8 +122,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c088ec62f5390ab4bbe73436f3126ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 0}
   _fishMovement: {fileID: 114353774249558612}
   _eatable: {fileID: -4641914176930461134}
+--- !u!114 &-6891580097041935352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012506264795700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6727cc0a226fc438410578393d45a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: 3
+--- !u!114 &-440158791159061764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012506264795700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d303f0f3de5095548b538a5b47e97748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &-7534424165026364928
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012506264795700}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &1053024012045812
 GameObject:
   m_ObjectHideFlags: 0

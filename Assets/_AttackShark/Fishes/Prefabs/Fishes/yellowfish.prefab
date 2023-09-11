@@ -500,6 +500,9 @@ GameObject:
   - component: {fileID: 1166722253332457689}
   - component: {fileID: -9177751911608691562}
   - component: {fileID: 7924521388330822806}
+  - component: {fileID: -7201912179513724562}
+  - component: {fileID: 3242408267852570631}
+  - component: {fileID: 5281639305078485211}
   m_Layer: 7
   m_Name: yellowfish
   m_TagString: Untagged
@@ -516,8 +519,8 @@ Transform:
   m_GameObject: {fileID: 1960118843247954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4478028335182216}
   - {fileID: 4649669772281884}
@@ -551,9 +554,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationLerpParameter: 1
   _size: 1
+  _fishLevel: 2
+  _runawayDistance: 1
   _obstaclesLayer:
     serializedVersion: 2
     m_Bits: 192
+  _runAwayTrigger: {fileID: 3242408267852570631}
+  _minSpeed: 0.5
+  _maxSpeed: 0.7
 --- !u!95 &1166722253332457689
 Animator:
   serializedVersion: 5
@@ -600,8 +608,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c088ec62f5390ab4bbe73436f3126ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 0}
   _fishMovement: {fileID: 114062833297716194}
   _eatable: {fileID: -9177751911608691562}
+--- !u!114 &-7201912179513724562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960118843247954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6727cc0a226fc438410578393d45a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: 2
+--- !u!114 &3242408267852570631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960118843247954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d303f0f3de5095548b538a5b47e97748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &5281639305078485211
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960118843247954}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &1994588474243268
 GameObject:
   m_ObjectHideFlags: 0

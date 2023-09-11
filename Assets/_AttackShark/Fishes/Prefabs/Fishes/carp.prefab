@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: -3348163267428826223}
   - component: {fileID: 3104376866604386793}
   - component: {fileID: 9121125496877128052}
+  - component: {fileID: -1775145773112660143}
+  - component: {fileID: -6199594397681980804}
+  - component: {fileID: 3244691691628990727}
   m_Layer: 7
   m_Name: carp
   m_TagString: Untagged
@@ -30,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 1062887002482736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4626042784087900}
   - {fileID: 4224087377225704}
@@ -64,10 +67,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationLerpParameter: 1
-  _size: 1
+  _size: 2
+  _fishLevel: 4
+  _runawayDistance: 1
   _obstaclesLayer:
     serializedVersion: 2
     m_Bits: 192
+  _runAwayTrigger: {fileID: -6199594397681980804}
+  _minSpeed: 0.5
+  _maxSpeed: 0.7
 --- !u!95 &-3348163267428826223
 Animator:
   serializedVersion: 5
@@ -114,8 +122,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c088ec62f5390ab4bbe73436f3126ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 15ed283b65963524bb9116a0c71e7f8f, type: 2}
   _fishMovement: {fileID: 114723428014049182}
   _eatable: {fileID: 3104376866604386793}
+--- !u!114 &-1775145773112660143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062887002482736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6727cc0a226fc438410578393d45a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: 4
+--- !u!114 &-6199594397681980804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062887002482736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d303f0f3de5095548b538a5b47e97748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &3244691691628990727
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062887002482736}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &1159126098305048
 GameObject:
   m_ObjectHideFlags: 0

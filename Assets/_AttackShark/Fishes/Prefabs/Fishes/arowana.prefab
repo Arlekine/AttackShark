@@ -108,6 +108,9 @@ GameObject:
   - component: {fileID: 114659863616513800}
   - component: {fileID: -2379668335684557583}
   - component: {fileID: -2316611219348880349}
+  - component: {fileID: 1861868705789700943}
+  - component: {fileID: 7561321010840048637}
+  - component: {fileID: -2249079496262417333}
   m_Layer: 7
   m_Name: arowana
   m_TagString: Untagged
@@ -180,9 +183,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationLerpParameter: 1
   _size: 1
+  _fishLevel: 0
+  _runawayDistance: 1
   _obstaclesLayer:
     serializedVersion: 2
     m_Bits: 192
+  _runAwayTrigger: {fileID: 7561321010840048637}
+  _minSpeed: 0.5
+  _maxSpeed: 0.7
 --- !u!114 &-2379668335684557583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +216,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c088ec62f5390ab4bbe73436f3126ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 0}
   _fishMovement: {fileID: 114659863616513800}
   _eatable: {fileID: -2379668335684557583}
+--- !u!114 &1861868705789700943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204732971096610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6727cc0a226fc438410578393d45a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: 0
+--- !u!114 &7561321010840048637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204732971096610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d303f0f3de5095548b538a5b47e97748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &-2249079496262417333
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204732971096610}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &1259647596948232
 GameObject:
   m_ObjectHideFlags: 0

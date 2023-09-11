@@ -13,13 +13,14 @@ namespace FreshwaterFish {
         [SerializeField] private Vector3 _spawnLimits = new Vector3(1, 1, 1);
         [SerializeField] private Vector3 _swimLimits = new Vector3(5, 5, 5);
         [SerializeField] private int _fishAmount = 5;
-
-		[Header("Fish Settings")]
-		[Range(0f, 5f)][SerializeField] private float _minSpeed = 0.1f;
-		[Range(0f, 5f)][SerializeField] private float _maxSpeed = 0.2f;
+        
+        [Header("Goal Update Time")]
+        [SerializeField] private float _minTimeBetweenUpdates = 7f;
+        [SerializeField] private float _maxTimeBetweenUpdates = 15f;
 
         private Vector3 _goal;
         public List<FishMovement> _allFish;
+        private float _nextGoalUpdateTime;
 
 		private void Start()
         {
@@ -35,7 +36,7 @@ namespace FreshwaterFish {
 
 				var newFish = Instantiate(fishPrefab, pos, Quaternion.identity);
 
-                newFish.Init(_minSpeed, _maxSpeed, _swimZone);
+                newFish.Init(_swimZone);
                 newFish.SetGoal(transform.position);
 
                 _allFish.Add(newFish);
@@ -51,6 +52,14 @@ namespace FreshwaterFish {
 			UpdateGoalForAllFishes();
 		}
 
+        private void Update()
+        {
+            if (Time.time >= _nextGoalUpdateTime)
+            {
+                UpdateGoalForAllFishes();
+            }
+        }
+
         private void OnFishDestroyed(FishMovement destroyedFish)
         {
             destroyedFish.GoalReached -= UpdateGoalForAllFishes;
@@ -65,8 +74,10 @@ namespace FreshwaterFish {
         }
 
         private void UpdateGoalForAllFishes()
-		{
-			_goal = this.transform.position + new Vector3(Random.Range(-_swimLimits.x, _swimLimits.x), 0, Random.Range(-_swimLimits.z, _swimLimits.z));
+        {
+            _nextGoalUpdateTime = Time.time + Random.Range(_minTimeBetweenUpdates, _maxTimeBetweenUpdates);
+
+            _goal = this.transform.position + new Vector3(Random.Range(-_swimLimits.x, _swimLimits.x), 0, Random.Range(-_swimLimits.z, _swimLimits.z));
             _goal.y = _swimZone.GetRandomYForPosition(_goal);
 
 			for (int i = 0; i < _allFish.Count; i++)

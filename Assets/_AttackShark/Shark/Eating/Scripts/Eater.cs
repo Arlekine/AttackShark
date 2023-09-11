@@ -17,6 +17,13 @@ public class Eater : MonoBehaviour
     [SerializeField] private Transform _eatPoint;
     [SerializeField] private float _eatableToMouthMoveTime;
 
+    private IEatingCondition _eatingCondition;
+
+    public void Init(IEatingCondition condition)
+    {
+        _eatingCondition = condition;
+    }
+
     private void OnEnable()
     {
         _eatTrigger.TriggerEnter += Eat;
@@ -29,6 +36,9 @@ public class Eater : MonoBehaviour
 
     private void Eat(Eatable eatable)
     {
+        if (_eatingCondition.CanEat(eatable) == false)
+            return;
+
         _jawsAnimator.OnEat();
         _bellyAnimator.Play(_bellyAnimationOffset);
 

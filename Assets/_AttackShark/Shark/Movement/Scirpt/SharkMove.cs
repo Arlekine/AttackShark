@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-internal class SharkMove : MonoBehaviour
+public class SharkMove : MonoBehaviour
 {
     [SerializeField] private float _minForwardSpeed = 5f;
     [SerializeField] private float _maxForwardSpeed = 5f;

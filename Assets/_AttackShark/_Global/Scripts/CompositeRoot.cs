@@ -9,8 +9,19 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private SharkJoystickInput _sharkInput;
     [SerializeField] private CameraControl _cameraControl;
 
+    [Header("Quests")]
+    [SerializeField] private QuestView _questView;
+    [SerializeField] private Quest _quest;
+
     private void Start()
     {
         _shark.Init(_cameraControl, _sharkInput);
+    }
+
+    [EditorButton]
+    private void StartQuest()
+    {
+        _quest.StartQuest(_shark.Eater);
+        _questView.Show(_quest);
     }
 }
