@@ -2166,7 +2166,7 @@ Transform:
   m_GameObject: {fileID: 768033684868285292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 768033684691424670}
@@ -3487,15 +3487,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _growLevels:
   - _pointsToAchieveNext: 100
-    _sharkScale: 0.2
+    _sharkScale: 0.15
   - _pointsToAchieveNext: 150
-    _sharkScale: 0.3
+    _sharkScale: 0.2
   - _pointsToAchieveNext: 200
-    _sharkScale: 0.37
+    _sharkScale: 0.27
   - _pointsToAchieveNext: 200
-    _sharkScale: 0.42
+    _sharkScale: 0.35
   - _pointsToAchieveNext: 250
-    _sharkScale: 0.5
+    _sharkScale: 0.42
   _growTarget: {fileID: 768033684868325132}
   _newLevelSetTime: 0.3
 --- !u!1 &1312897263320052357

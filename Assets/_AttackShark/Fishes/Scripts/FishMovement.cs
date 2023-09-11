@@ -26,6 +26,7 @@ namespace FreshwaterFish
         private float _speed;
 
         private Rigidbody _rigidbody;
+        private Animator _animator;
         private SwimZone _swimZone;
         private Vector3 _goalPosition;
         private List<FishMovement> _shoal;
@@ -39,12 +40,13 @@ namespace FreshwaterFish
 
         public void Init(SwimZone swimZone)
         {
-            var progress = Mathf.InverseLerp(0, 4, _size);
+            var progress = Mathf.InverseLerp(0, 4, _fishLevel);
             var mod = Mathf.Lerp(1, 2, progress);
 
             _speed = Random.Range(_minSpeed * mod, _maxSpeed * mod);
             _swimZone = swimZone;
             _rigidbody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
         }
 
         public void SetShoal(List<FishMovement> fishes)
@@ -74,6 +76,11 @@ namespace FreshwaterFish
                 _goalPosition.y = _swimZone.ClampYForPosition(_goalPosition);
 
                 additionalSpeed = _speed;
+                _animator.speed = 2f;
+            }
+            else
+            {
+                _animator.speed = 1f;
             }
 
             //BalanceHeight();

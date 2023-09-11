@@ -16,6 +16,7 @@ public class CompositeRoot : MonoBehaviour
     private void Start()
     {
         _shark.Init(_cameraControl, _sharkInput);
+        StartQuest();
     }
 
     [EditorButton]
