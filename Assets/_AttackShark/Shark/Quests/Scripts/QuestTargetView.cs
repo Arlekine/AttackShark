@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestTargetView : MonoBehaviour
 {
-    private const string CounterFormat = "{0}/{1}";
+    private const string CounterFormat = "{0} / {1}";
 
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _counter;

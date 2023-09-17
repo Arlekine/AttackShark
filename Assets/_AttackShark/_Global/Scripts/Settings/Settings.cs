@@ -1,0 +1,30 @@
+using System;
+using UnityEngine;
+
+public class Settings
+{
+    public Action<bool> HapticChanged;
+    public Action<bool> SoundChanged;
+
+    private SettingsData _currentData;
+
+    public Settings(SettingsData data)
+    {
+        _currentData = data;
+    }
+    public void SetHaptic(bool isOn)
+    {
+        Haptic.IsHapticActive = isOn;
+
+        _currentData.HapticOn = isOn;
+        HapticChanged?.Invoke(isOn);
+    }
+
+    public void SetSound(bool isOn)
+    {
+        AudioListener.volume = isOn ? 1f : 0f;
+
+        _currentData.SoundOn = isOn;
+        SoundChanged?.Invoke(isOn);
+    }
+}

@@ -1,31 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using FIMSpace.FTail;
+using FreshwaterFish;
 using UnityEngine;
 
 public class SharkMove : MonoBehaviour
 {
     [SerializeField] private float _minForwardSpeed = 5f;
     [SerializeField] private float _maxForwardSpeed = 5f;
+
+    [Space]
     [SerializeField] private float _lerpAcceleration = 1f;
     [SerializeField] private float _lerpDeceleration = 3f;
+
+    [Space]
     [SerializeField] private float _rotationLerpingParameter = 5f;
 
+    [Space]
+    [SerializeField] private float _borderClampingTime = 1f;
+
     private ISharkMoveInput _input;
-    private float _currentSpeed;
-    private float _currentMaxSpeed;
+    private SwimZone _swimZone;
+    private float _returnControlTime;
+    private Vector3 _borderCrossPoint;
 
-    public float CurrentSpeed => _currentSpeed;
-    public float CurrentMaxSpeed => _currentMaxSpeed;
+    public float CurrentSpeed { get; private set; }
+    public float CurrentMaxSpeed { get; private set; }
 
-    public void Init(ISharkMoveInput input)
+    public void Init(SwimZone swimZone, ISharkMoveInput input)
     {
-        _currentMaxSpeed = _minForwardSpeed;
+        _swimZone = swimZone;
+        CurrentMaxSpeed = _minForwardSpeed;
         _input = input;
     }
 
     public void SetMaxSpeedNormalized(float normalizedSpeed)
     {
-        _currentMaxSpeed = Mathf.Lerp(_minForwardSpeed, _maxForwardSpeed, normalizedSpeed);
+        CurrentMaxSpeed = Mathf.Lerp(_minForwardSpeed, _maxForwardSpeed, normalizedSpeed);
     }
 
     private void Update()
@@ -36,17 +47,38 @@ public class SharkMove : MonoBehaviour
         var targetSpeed = 0f;
         var targetLerpParameter = _lerpDeceleration;
 
-        var  inputVector = _input.GetFrameInput();
+        var clampedPos = _swimZone.ClampHorizontalPosition(transform.position);
 
-        if (inputVector.x != 0 || inputVector.y != 0)
+        if (clampedPos != transform.position)
         {
-            targetSpeed = _currentMaxSpeed;
-            targetLerpParameter = _lerpAcceleration;
-
-            transform.forward = Vector3.Lerp(transform.forward, new Vector3(inputVector.x, 0f, inputVector.y), _rotationLerpingParameter * Time.deltaTime);
+            _borderCrossPoint = transform.position;
+            _returnControlTime = Time.time + _borderClampingTime;
         }
 
-        _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, targetLerpParameter * Time.deltaTime);
-        transform.position += transform.forward * _currentSpeed * Time.deltaTime;
+        if (Time.time < _returnControlTime)
+        {
+            var zoneCenter = _swimZone.GetZoneCenter();
+            zoneCenter.y = _borderCrossPoint.y;
+            var targetDirection = (zoneCenter - _borderCrossPoint).normalized;
+
+            transform.forward = Vector3.Lerp(transform.forward, targetDirection, _rotationLerpingParameter * Time.deltaTime);
+        }
+        else
+        {
+            var inputVector = _input.GetFrameInput();
+
+            if (inputVector.x != 0 || inputVector.y != 0)
+            {
+                targetSpeed = CurrentMaxSpeed;
+                targetLerpParameter = _lerpAcceleration;
+
+                transform.forward = Vector3.Lerp(transform.forward, new Vector3(inputVector.x, 0f, inputVector.y),
+                    _rotationLerpingParameter * Time.deltaTime);
+            }
+
+            CurrentSpeed = Mathf.Lerp(CurrentSpeed, targetSpeed, targetLerpParameter * Time.deltaTime);
+        }
+
+        transform.position += transform.forward * CurrentSpeed * Time.deltaTime;
     }
 }

@@ -15,6 +15,7 @@ namespace FreshwaterFish
 		[SerializeField] private float _rotationLerpParameter = 1f;
         [SerializeField] private float _size = 1f;
         [SerializeField] private float _fishLevel = 1f;
+        [SerializeField] private float _yOffset = 0f;
         [SerializeField] private float _runawayDistance = 10f;
         [SerializeField] private LayerMask _obstaclesLayer;
         [SerializeField] private RunAwayTrigger _runAwayTrigger;
@@ -31,7 +32,6 @@ namespace FreshwaterFish
         private Vector3 _goalPosition;
         private List<FishMovement> _shoal;
         private List<FishHazard> _currentHazards = new List<FishHazard>();
-        private List<FishCollider> _currentColliders = new List<FishCollider>();
 
         public Action GoalReached;
         public Action<FishMovement> Destroyed;
@@ -73,7 +73,7 @@ namespace FreshwaterFish
                 var hazardsCenter = GetHazardCenter();
                 var directionFromHazards = (transform.position - hazardsCenter).normalized;
                 _goalPosition = transform.position + directionFromHazards * _runawayDistance;
-                _goalPosition.y = _swimZone.ClampYForPosition(_goalPosition);
+                _goalPosition.y = _swimZone.GetSwimHeight();
 
                 additionalSpeed = _speed;
                 _animator.speed = 2f;
@@ -83,12 +83,14 @@ namespace FreshwaterFish
                 _animator.speed = 1f;
             }
 
-            //BalanceHeight();
-
+            _goalPosition = _swimZone.ClampHorizontalPosition(_goalPosition);
             Vector3 direction = _goalPosition + localAvoidance - this.transform.position;
 
             _rigidbody.MovePosition(transform.position + transform.forward * Time.deltaTime * (_speed + additionalSpeed));
             _rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), _rotationLerpParameter * Time.deltaTime));
+
+            BalanceHeight();
+            BalanceAngles();
 
             /*transform.Translate(0, 0, Time.deltaTime * (_speed + additionalSpeed));
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), _rotationLerpParameter * Time.deltaTime);*/
@@ -97,7 +99,7 @@ namespace FreshwaterFish
 			{
 				transform.Translate(Vector3.down * 0.1f * Time.deltaTime);
 			}*/
-		}
+        }
 
         private void OnEnable()
         {
@@ -203,15 +205,18 @@ namespace FreshwaterFish
 
         private void BalanceHeight()
         {
-            if (transform.position.y < _swimZone.GetMinHeightForPosition(transform.position))
-            {
-                transform.Translate(Vector3.up * 0.3f * Time.deltaTime);
-            }
+            var pos = _rigidbody.position;
+            pos.y = _swimZone.GetSwimHeight() + _yOffset;
+            _rigidbody.position = pos;
+        }
 
-            if (transform.position.y > _swimZone.GetMaxHeightForPosition(transform.position))
-            {
-                transform.Translate(Vector3.down * 0.3f * Time.deltaTime);
-            }
+        private void BalanceAngles()
+        {
+            var rot = _rigidbody.rotation.eulerAngles;
+            rot.x = 0f;
+            rot.z = 0f;
+
+            _rigidbody.rotation = Quaternion.Euler(rot);
         }
 
         public void SetGoal(Vector3 position)

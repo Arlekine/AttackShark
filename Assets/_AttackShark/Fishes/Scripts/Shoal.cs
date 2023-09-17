@@ -7,34 +7,39 @@ namespace FreshwaterFish {
 	public class Shoal : MonoBehaviour
 	{
         [SerializeField] private FishMovement fishPrefab;
-        [SerializeField] private SwimZone _swimZone;
 
         [Space]
-        [SerializeField] private Vector3 _spawnLimits = new Vector3(1, 1, 1);
-        [SerializeField] private Vector3 _swimLimits = new Vector3(5, 5, 5);
+        [SerializeField] private float _spawnRadius = 1f;
+        [SerializeField] private float _swimRadius = 5f;
         [SerializeField] private int _fishAmount = 5;
+        [SerializeField] private float _fishAdditionalScale = 1f;
         
         [Header("Goal Update Time")]
         [SerializeField] private float _minTimeBetweenUpdates = 7f;
         [SerializeField] private float _maxTimeBetweenUpdates = 15f;
 
-        private Vector3 _goal;
-        public List<FishMovement> _allFish;
         private float _nextGoalUpdateTime;
+        private Vector3 _goal;
 
-		private void Start()
+        private List<FishMovement> _allFish;
+        private SwimZone _swimZone;
+
+        public void InitFishSpawn(SwimZone swimZone)
         {
-            _swimZone = GetComponent<SwimZone>();
+            _swimZone = swimZone;
 			_goal = this.transform.position;
 			_allFish = new List<FishMovement>();
 
 			for (int i = 0; i < _fishAmount; i++)
-			{
-				Vector3 pos = this.transform.position + new Vector3(Random.Range(-_spawnLimits.x, _spawnLimits.x), 0, Random.Range(-_spawnLimits.z, _spawnLimits.z));
+            {
+                var randomOffset = Random.insideUnitCircle * _spawnRadius;
+				Vector3 pos = this.transform.position + new Vector3(randomOffset.x, 0f, randomOffset.y);
 
-                pos.y = _swimZone.ClampYForPosition(pos);
+                pos.y = _swimZone.GetSwimHeight();
 
 				var newFish = Instantiate(fishPrefab, pos, Quaternion.identity);
+                newFish.transform.parent = transform;
+                newFish.transform.localScale *= _fishAdditionalScale;
 
                 newFish.Init(_swimZone);
                 newFish.SetGoal(transform.position);
@@ -77,14 +82,24 @@ namespace FreshwaterFish {
         {
             _nextGoalUpdateTime = Time.time + Random.Range(_minTimeBetweenUpdates, _maxTimeBetweenUpdates);
 
-            _goal = this.transform.position + new Vector3(Random.Range(-_swimLimits.x, _swimLimits.x), 0, Random.Range(-_swimLimits.z, _swimLimits.z));
-            _goal.y = _swimZone.GetRandomYForPosition(_goal);
+            var randomOffset = Random.insideUnitCircle * _swimRadius;
+            _goal = this.transform.position + new Vector3(randomOffset.x, 0f, randomOffset.y);
+            _goal.y = _swimZone.GetSwimHeight();
 
 			for (int i = 0; i < _allFish.Count; i++)
-			{
+            {
+                _goal = _swimZone.ClampHorizontalPosition(_goal);
 				_allFish[i].SetGoal(_goal);
 			}
-			
-		}
-	}
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, _spawnRadius);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _swimRadius);
+        }
+    }
 }

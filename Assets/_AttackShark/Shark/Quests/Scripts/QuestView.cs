@@ -15,7 +15,6 @@ public class QuestView : MonoBehaviour
         ClearCurrentQuest();
 
         _currentQuest = quest;
-        _currentQuest.Completed += OnQuestCompleted;
         foreach (var questTarget in quest.Targets)
         {
             _targets.Add(CreateNewView(questTarget));
@@ -29,16 +28,8 @@ public class QuestView : MonoBehaviour
         return view;
     }
 
-    private void OnQuestCompleted(Quest quest)
-    {
-        ClearCurrentQuest();
-    }
-
     private void ClearCurrentQuest()
     {
-        if (_currentQuest != null)
-            _currentQuest.Completed -= OnQuestCompleted;
-
         foreach (var target in _targets)
         {
             Destroy(target.gameObject);

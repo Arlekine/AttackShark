@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2069187419239853908}
-    m_Position: {x: 328.18445, y: 275.12445, z: 0}
+    m_Position: {x: 330, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4935086126098674537}
     m_Position: {x: 394.94873, y: 369.70715, z: 0}
@@ -43,13 +43,13 @@ AnimatorState:
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
+  m_CycleOffsetParameterActive: 1
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400002, guid: f0e22988f39892647a57cfcfcb63ce29, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
+  m_CycleOffsetParameter: offset
   m_TimeParameter: 
 --- !u!91 &9100000
 AnimatorController:
@@ -59,7 +59,13 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: chub controller
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: offset
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

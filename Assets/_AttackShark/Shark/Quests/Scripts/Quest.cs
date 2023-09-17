@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using FreshwaterFish;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "DATA/Quest", fileName = "Quest")]
-public class Quest : ScriptableObject
+[Serializable]
+public class Quest
 {
     [Serializable]
     public class FishTarget

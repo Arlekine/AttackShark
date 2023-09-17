@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using FIMSpace.FTail;
 using UnityEngine;
 
@@ -24,7 +22,7 @@ public class SharkAnimator : MonoBehaviour
         var targetSpeed = Mathf.Lerp(_minAnimationSpeed, _maxAnimationSpeed, sharkSpeedNormalized);
         var targetTailInfluence = Mathf.Lerp(_minTailInfluence, _maxTailInfluence, sharkSpeedNormalized);
 
-        _animator.SetFloat(_speedParameterName, targetSpeed);
-        _tailAnimator.TailAnimatorAmount = targetTailInfluence;
+        _animator.SetFloat(_speedParameterName, Mathf.Lerp(_animator.GetFloat(_speedParameterName), targetSpeed, Time.deltaTime * 4f));
+        _tailAnimator.TailAnimatorAmount = Mathf.Lerp(_tailAnimator.TailAnimatorAmount, targetTailInfluence, Time.deltaTime * 4f);
     }
 }
