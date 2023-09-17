@@ -14,24 +14,34 @@ public static class AudioManager
     private static List<AudioSource> _busySources = new List<AudioSource>();
     private static Transform _sounds2DParent;
 
-    public static void PlaySound(StaticSound sound)
+    public static AudioSource PlaySound(StaticSound sound)
     {
         if (_staticSources.ContainsKey(sound) == false)
             _staticSources[sound] = CreateNewSource($"StaticSound-{sound}");
 
         var clip = Resources.Load<AudioClip>(sound.ToString());
         _staticSources[sound].PlayOneShot(clip);
+
+        return _staticSources[sound];
     }
 
-    public static void PlaySound(AudioClip clip)
+    public static AudioSource PlaySound(AudioClip clip, bool loop = false)
     {
         if (_freeSources.Count == 0)
             _freeSources.Add(CreateNewSource(clip.name));
 
         var source = _freeSources[0];
-        source.PlayOneShot(clip);
+        source.loop = loop;
+        source.clip = clip;
+        source.Play();
+
         _freeSources.Remove(source);
         _busySources.Add(source);
+
+        if (loop == false)
+            ReturnSourceToFreeAfterPause(source, clip.length);
+
+        return source;
     }
 
     private static void ReturnSourceToFreeAfterPause(AudioSource source, float pause)

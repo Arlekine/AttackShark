@@ -38,6 +38,7 @@ public class Quest
     private Eater _eater;
 
     public Action<Quest> Completed;
+    public Action<Quest> TargetCompleted;
 
     public List<FishTarget> Targets => _targets;
 
@@ -61,6 +62,9 @@ public class Quest
         if (target != null && target.IsComplete == false)
         {
             target.AddEatedFish();
+
+            if (target.IsComplete)
+                TargetCompleted?.Invoke(this);
 
             if (IsAllTargetsComplete())
             {

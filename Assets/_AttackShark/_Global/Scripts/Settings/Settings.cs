@@ -8,6 +8,9 @@ public class Settings
 
     private SettingsData _currentData;
 
+    public bool SoundOn => _currentData.SoundOn;
+    public bool HapticOn => _currentData.HapticOn;
+
     public Settings(SettingsData data)
     {
         _currentData = data;

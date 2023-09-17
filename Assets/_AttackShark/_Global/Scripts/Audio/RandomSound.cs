@@ -6,9 +6,9 @@ public class RandomSound : SoundPlayer
 {
     [SerializeField] private AudioClip[] _sounds;
     
-    public override void Play()
+    public override AudioSource Play()
     {
         var randomSound = _sounds[Random.Range(0, _sounds.Length)];
-        AudioManager.PlaySound(randomSound);
+        return AudioManager.PlaySound(randomSound);
     }
 }

@@ -2171,6 +2171,7 @@ GameObject:
   - component: {fileID: 768033685536560021}
   - component: {fileID: 7283636398534603179}
   - component: {fileID: 446459915006686427}
+  - component: {fileID: 3300898292661382837}
   m_Layer: 6
   m_Name: Shark
   m_TagString: Untagged
@@ -2219,6 +2220,7 @@ MonoBehaviour:
   _eatingEffect: {fileID: 820201163097859156}
   _eatingSound: {fileID: 7283636398534603179}
   _growingSound: {fileID: 446459915006686427}
+  _swimmingSound: {fileID: 3300898292661382837}
 --- !u!114 &768033685536559722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2708,7 +2710,7 @@ MonoBehaviour:
     InitialLocalRotationInRoot: {x: 0, y: 0, z: 0, w: 1}
     LocalOffset: {x: 0, y: 0, z: 0}
     InitialLocalRotation: {x: -0.012817353, y: 0, z: -0, w: 0.99991786}
-    ColliderRadius: 0.58773047
+    ColliderRadius: 1.4693261
     CollisionContactFlag: 0
     CollisionContactRelevancy: -1
     VelocityHelper: {x: 0, y: 0, z: 0}
@@ -2740,7 +2742,7 @@ MonoBehaviour:
     InitialLocalRotationInRoot: {x: -0.044230357, y: 0, z: 0, w: 0.99902153}
     LocalOffset: {x: 0, y: 0, z: 0}
     InitialLocalRotation: {x: -0.04423035, y: -1.2234483e-16, z: -5.4166558e-18, w: 0.99902135}
-    ColliderRadius: 0.44079787
+    ColliderRadius: 1.1019946
     CollisionContactFlag: 0
     CollisionContactRelevancy: -1
     VelocityHelper: {x: 0, y: 0, z: 0}
@@ -2772,7 +2774,7 @@ MonoBehaviour:
     InitialLocalRotationInRoot: {x: -0.016604753, y: 0, z: 0, w: 0.9998623}
     LocalOffset: {x: 0, y: 0, z: 0}
     InitialLocalRotation: {x: 0.027635757, y: -1.8087585e-16, z: 5.000551e-18, w: 0.9996181}
-    ColliderRadius: 0.4114225
+    ColliderRadius: 1.0285562
     CollisionContactFlag: 0
     CollisionContactRelevancy: -1
     VelocityHelper: {x: 0, y: 0, z: 0}
@@ -2804,7 +2806,7 @@ MonoBehaviour:
     InitialLocalRotationInRoot: {x: -0.024909547, y: 0, z: 0, w: 0.9996898}
     LocalOffset: {x: 0, y: 0, z: 0}
     InitialLocalRotation: {x: -0.008306513, y: 4.4407388e-16, z: 3.6888326e-18, w: 0.9999655}
-    ColliderRadius: 0.4079519
+    ColliderRadius: 1.0198798
     CollisionContactFlag: 0
     CollisionContactRelevancy: -1
     VelocityHelper: {x: 0, y: 0, z: 0}
@@ -2836,7 +2838,7 @@ MonoBehaviour:
     InitialLocalRotationInRoot: {x: 0.002999802, y: 9.2848784e-11, z: -0.000000007243395, w: 0.99999565}
     LocalOffset: {x: 0, y: 0, z: 0}
     InitialLocalRotation: {x: 0.027908297, y: 2.0793302e-10, z: -0.0000000074476785, w: 0.9996105}
-    ColliderRadius: 0.39845002
+    ColliderRadius: 0.99612504
     CollisionContactFlag: 0
     CollisionContactRelevancy: -1
     VelocityHelper: {x: 0, y: 0, z: 0}
@@ -2868,7 +2870,7 @@ MonoBehaviour:
     InitialLocalRotationInRoot: {x: 0.0003371535, y: 1.0128958e-10, z: -0.000000007901885, w: 1.0000002}
     LocalOffset: {x: 0, y: 0, z: 0}
     InitialLocalRotation: {x: -0.0026626443, y: -3.9677133e-11, z: -1.0564647e-13, w: 0.9999965}
-    ColliderRadius: 0.40326747
+    ColliderRadius: 1.0081687
     CollisionContactFlag: 0
     CollisionContactRelevancy: -1
     VelocityHelper: {x: 0, y: 0, z: 0}
@@ -3047,10 +3049,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2933ee068eea446a039034811358c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _volume: 1
   _sounds:
   - {fileID: 8300000, guid: b79ea50b416a44746b7da763957beecd, type: 3}
   - {fileID: 8300000, guid: fcde33b4943f99e47aad27c7b2240b12, type: 3}
-  - {fileID: 8300000, guid: a3cddc3168ea50d4b95956888f4076e0, type: 3}
 --- !u!114 &446459915006686427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,7 +3065,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9b02f5eaccae9448411787d58a12ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _volume: 1
   _sound: {fileID: 8300000, guid: 6dab5af0a3800e249ae983c878558128, type: 3}
+  _loop: 0
+--- !u!114 &3300898292661382837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768033684868285292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9b02f5eaccae9448411787d58a12ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: 0.4
+  _sound: {fileID: 8300000, guid: 4150f3470f461dc43908b614dfee6116, type: 3}
+  _loop: 1
 --- !u!1 &768033684868285296
 GameObject:
   m_ObjectHideFlags: 0
