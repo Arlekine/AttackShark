@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2121246174186729393}
   - component: {fileID: 2121246174171598563}
   - component: {fileID: 2121246174172685757}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PortalDust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4773,7 +4773,7 @@ GameObject:
   - component: {fileID: 2121246174172684494}
   - component: {fileID: 2121246174171529535}
   - component: {fileID: 2121246174172684493}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ZoneBordersEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

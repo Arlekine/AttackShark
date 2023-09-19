@@ -3832,9 +3832,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4453107475742491934, guid: 3c86030b98093fe4697b2af2ed202ba3, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453107475742494732, guid: 3c86030b98093fe4697b2af2ed202ba3, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4453107475742508054, guid: 3c86030b98093fe4697b2af2ed202ba3, type: 3}
       propertyPath: m_Name
       value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453107475742508054, guid: 3c86030b98093fe4697b2af2ed202ba3, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453107475742671412, guid: 3c86030b98093fe4697b2af2ed202ba3, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c86030b98093fe4697b2af2ed202ba3, type: 3}

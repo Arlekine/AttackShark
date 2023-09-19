@@ -12,6 +12,7 @@ Material:
   m_ValidKeywords:
   - _CAUSTICSMODE_2D
   - _COLORMODE_COLORS
+  - _DYNAMIC_EFFECTS_ON
   - _EDGEFADE_ON
   - _FOAM_ON
   - _FOAM_WHITECAPS_ON
@@ -160,7 +161,7 @@ Material:
     - _DoubleSided: 0
     - _DstBlend: 0
     - _DynamicDisplacement: 0
-    - _DynamicEffects: 0
+    - _DynamicEffects: 1
     - _DynamicFoam: 1
     - _DynamicNormal: 4
     - _EdgeFade: 1

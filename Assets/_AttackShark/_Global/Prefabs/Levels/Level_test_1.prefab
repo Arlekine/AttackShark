@@ -131,12 +131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quest:
     _targets:
-    - _targetFish: {fileID: 11400000, guid: 3cf4ac694c2b87e4a8e1f1355644a7eb, type: 2}
-      _amountToEat: 3
     - _targetFish: {fileID: 11400000, guid: 9ece7251b75b2594389351790016d4a7, type: 2}
       _amountToEat: 3
   _shark: {fileID: 3579452321326597036}
-  _timeForLevel: 20
+  _timeForLevel: 120
   _swimZone: {fileID: 7903448704892656138}
   _freeSwim: {fileID: 7773190416034454858}
   _borderView: {fileID: 4920220140569412617}
@@ -155,11 +153,11 @@ MonoBehaviour:
   _swimZone: {fileID: 7903448704892656138}
   _fishVariants:
   - fishPrefab: {fileID: -4041638919026788914, guid: dc8d8b94d5b232c48898dc6ba13d796f, type: 3}
-    _fishAmount: 20
+    _fishAmount: 8
   - fishPrefab: {fileID: 114659863616513800, guid: 37d57f69a1a528a4fa7c786f64b327ef, type: 3}
-    _fishAmount: 20
+    _fishAmount: 8
   - fishPrefab: {fileID: -1137634915713052595, guid: 119f5f4af4536c548b7994cebbcceab9, type: 3}
-    _fishAmount: 20
+    _fishAmount: 10
   _fishAdditionalScale: 3.333333
   _spawnBordersOffset: 2
   _spawnCenterOffset: 4
@@ -487,6 +485,30 @@ PrefabInstance:
       propertyPath: _tailAnimator
       value: 
       objectReference: {fileID: 7903448705060276968}
+    - target: {fileID: 768033685536560021, guid: 8f8eac5c711562c44a6397c742612391, type: 3}
+      propertyPath: TailSegments.Array.data[0].ColliderRadius
+      value: 1.0285283
+      objectReference: {fileID: 0}
+    - target: {fileID: 768033685536560021, guid: 8f8eac5c711562c44a6397c742612391, type: 3}
+      propertyPath: TailSegments.Array.data[1].ColliderRadius
+      value: 0.7713963
+      objectReference: {fileID: 0}
+    - target: {fileID: 768033685536560021, guid: 8f8eac5c711562c44a6397c742612391, type: 3}
+      propertyPath: TailSegments.Array.data[2].ColliderRadius
+      value: 0.7199893
+      objectReference: {fileID: 0}
+    - target: {fileID: 768033685536560021, guid: 8f8eac5c711562c44a6397c742612391, type: 3}
+      propertyPath: TailSegments.Array.data[3].ColliderRadius
+      value: 0.7139158
+      objectReference: {fileID: 0}
+    - target: {fileID: 768033685536560021, guid: 8f8eac5c711562c44a6397c742612391, type: 3}
+      propertyPath: TailSegments.Array.data[4].ColliderRadius
+      value: 0.69728756
+      objectReference: {fileID: 0}
+    - target: {fileID: 768033685536560021, guid: 8f8eac5c711562c44a6397c742612391, type: 3}
+      propertyPath: TailSegments.Array.data[5].ColliderRadius
+      value: 0.7057181
+      objectReference: {fileID: 0}
     - target: {fileID: 2579425964582788387, guid: 8f8eac5c711562c44a6397c742612391, type: 3}
       propertyPath: playOnAwake
       value: 0

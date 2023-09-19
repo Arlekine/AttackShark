@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 434060}
   - component: {fileID: 19837252}
   - component: {fileID: 19918524}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 495590}
   - component: {fileID: 19826282}
   - component: {fileID: 19935376}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BubbleSubEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9667,7 +9667,7 @@ GameObject:
   - component: {fileID: 419664}
   - component: {fileID: 19816576}
   - component: {fileID: 19991654}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BlastSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14477,7 +14477,7 @@ GameObject:
   - component: {fileID: 452992}
   - component: {fileID: 19875188}
   - component: {fileID: 19979586}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BubbleBlastUnderwater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19373,7 +19373,7 @@ GameObject:
   - component: {fileID: 493870}
   - component: {fileID: 19802098}
   - component: {fileID: 19954406}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Droplets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24230,6 +24230,10 @@ PrefabInstance:
     - target: {fileID: 1027443401391837221, guid: 17b7ab9f279d4c94eb59ac5ff56b7e8e, type: 3}
       propertyPath: m_Name
       value: Prefab_VFX_Splash
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027443401391837221, guid: 17b7ab9f279d4c94eb59ac5ff56b7e8e, type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b7ab9f279d4c94eb59ac5ff56b7e8e, type: 3}

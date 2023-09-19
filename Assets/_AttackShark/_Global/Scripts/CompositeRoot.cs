@@ -168,6 +168,8 @@ public class CompositeRoot : MonoBehaviour
 
     private void LevelFailed()
     {
+        _levelManager.StopCurrentLevel();
+
         _gameplayGroup.Hide();
         _levelEndGroup.Show();
 

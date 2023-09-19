@@ -49,6 +49,11 @@ public class LevelManager : MonoBehaviour
         return LoadCurrentLevel();
     }
 
+    public void StopCurrentLevel()
+    {
+        _currentLevelObject.Completed -= OnLevelCompleted;
+    }
+
     private void OnLevelCompleted()
     {
         var completed = _currentLevel;
