@@ -1,16 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GrowingProgressView : MonoBehaviour
 {
-    private const string CurrentLevelFormat = "Level {0}";
-
-    [SerializeField] private TMP_Text _levelText;
-    [SerializeField] private Slider _progressSlider;
+    [SerializeField] private Slider _slider;
 
     private Grower _currentGrower;
 
@@ -23,9 +17,7 @@ public class GrowingProgressView : MonoBehaviour
         _currentGrower.PointsAdded += OnPointsAdded;
         _currentGrower.LevelUp += OnLevelUp;
 
-        _progressSlider.value = _currentGrower.CurrentPointsProgress;
-
-        SetCurrentLevel(_currentGrower.CurrentLevelIndex + 1);
+        _slider.value = _currentGrower.CurrentPointsProgress;
     }
 
     public void Clear()
@@ -38,17 +30,11 @@ public class GrowingProgressView : MonoBehaviour
 
     private void OnPointsAdded(int currentPoints)
     {
-        _progressSlider.value = _currentGrower.CurrentPointsProgress;
+        _slider.value = _currentGrower.CurrentPointsProgress;
     }
 
     private void OnLevelUp(int levelIndex, Grower.GrowLevel level)
     {
-        SetCurrentLevel(levelIndex + 1);
-        _progressSlider.value = _currentGrower.IsMaxLevel ?  1f : _currentGrower.CurrentPointsProgress;
-    }
-
-    private void SetCurrentLevel(int level)
-    {
-        _levelText.text = String.Format(CurrentLevelFormat, level);
+        _slider.value = _currentGrower.IsMaxLevel ? 1f : _currentGrower.CurrentPointsProgress;
     }
 }

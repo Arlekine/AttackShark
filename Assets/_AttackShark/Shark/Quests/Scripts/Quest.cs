@@ -16,6 +16,7 @@ public class Quest
         private int _currentEated;
 
         public Action<int> Updated;
+        public Action Completed;
         public FishData TargetFish => _targetFish;
         public int AmountToEat => _amountToEat;
         public int CurrentProgress => _currentEated;
@@ -30,6 +31,9 @@ public class Quest
         {
             _currentEated++;
             Updated?.Invoke(_currentEated);
+
+            if (IsComplete)
+                Completed?.Invoke();
         }
     }
 
@@ -38,7 +42,7 @@ public class Quest
     private Eater _eater;
 
     public Action<Quest> Completed;
-    public Action<Quest> TargetCompleted;
+    public Action TargetCompleted;
 
     public List<FishTarget> Targets => _targets;
 
@@ -47,10 +51,20 @@ public class Quest
         _eater = eater;
         _eater.Eated += OnEated;
 
+        foreach (var fishTarget in Targets)
+        {
+            fishTarget.Completed += InvokeTargetCompleted;
+        }
+
         foreach (var fishTarget in _targets)
         {
             fishTarget.Reset();
         }
+    }
+
+    private void InvokeTargetCompleted()
+    {
+        TargetCompleted?.Invoke();
     }
 
     private void OnEated(Eatable eatable)
@@ -62,9 +76,6 @@ public class Quest
         if (target != null && target.IsComplete == false)
         {
             target.AddEatedFish();
-
-            if (target.IsComplete)
-                TargetCompleted?.Invoke(this);
 
             if (IsAllTargetsComplete())
             {
@@ -80,6 +91,8 @@ public class Quest
         {
             if (fishTarget.IsComplete == false)
                 return false;
+
+            fishTarget.Completed -= InvokeTargetCompleted;
         }
 
         return true;

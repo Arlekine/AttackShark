@@ -14,6 +14,9 @@ public class Settings
     public Settings(SettingsData data)
     {
         _currentData = data;
+
+        Haptic.IsHapticActive = _currentData.HapticOn;
+        AudioListener.volume = _currentData.SoundOn ? 1f : 0f;
     }
     public void SetHaptic(bool isOn)
     {

@@ -14,12 +14,9 @@ public class SharkRoot : MonoBehaviour
     [SerializeField] private EatingEffect _eatingEffect;
     [SerializeField] private SoundPlayer _eatingSound;
     [SerializeField] private SoundPlayer _growingSound;
-    [SerializeField] private SingleSoundPlayer _swimmingSound;
 
     private CameraControl _cameraControl;
     private SizeEatingCondition _eaterCondition;
-    private Underwater _underwater;
-    private AudioSource _swimmingSoundAudioSource;
 
     public Action<int> SharkLevelUp;
 
@@ -42,9 +39,6 @@ public class SharkRoot : MonoBehaviour
 
         _grower.LevelUp += OnLevelUp;
         _eater.Eated += OnEated;
-
-        _swimmingSound.Loop = true;
-        _swimmingSoundAudioSource = _swimmingSound.Play();
     }
 
     private void OnEated(Eatable eatable)
@@ -69,11 +63,5 @@ public class SharkRoot : MonoBehaviour
         _sharkMove.SetMaxSpeedNormalized(_grower.CurrentGrowthProgress);
 
         SharkLevelUp?.Invoke(currentLevelIndex);
-    }
-
-    private void Update()
-    {
-        var normalizedVolume = Mathf.InverseLerp(0f, SharkMove.CurrentMaxSpeed, _sharkMove.CurrentSpeed);
-        _swimmingSoundAudioSource.volume = Mathf.Lerp(0f, _swimmingSound.Volume, normalizedVolume);
     }
 }

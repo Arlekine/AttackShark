@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7903448706205971041}
   - component: {fileID: 7903448706205971040}
+  - component: {fileID: 7283370857551428815}
   m_Layer: 0
   m_Name: Level_test_3
   m_TagString: Untagged
@@ -139,8 +140,37 @@ MonoBehaviour:
     - _targetFish: {fileID: 11400000, guid: fbedde578ccb015478c773f93af427d6, type: 2}
       _amountToEat: 3
   _shark: {fileID: 3579452321326597036}
+  _timeForLevel: 180
   _swimZone: {fileID: 7903448704892656138}
+  _freeSwim: {fileID: 7283370857551428815}
   _borderView: {fileID: 2071397360166176638}
+--- !u!114 &7283370857551428815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7903448706205971042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b4d93d39f271c43a83eab7016433d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _swimZone: {fileID: 7903448704892656138}
+  _fishVariants:
+  - fishPrefab: {fileID: 5781080261217461838, guid: afe7f9913f0e4774994ffa49b24d96bb, type: 3}
+    _fishAmount: 30
+  - fishPrefab: {fileID: -306032763500652856, guid: 2b4d0ff652e973e4b8bf258721e86b9f, type: 3}
+    _fishAmount: 30
+  - fishPrefab: {fileID: 114927679447904612, guid: a3835ed016a48d14ca0492ccc5854cca, type: 3}
+    _fishAmount: 12
+  - fishPrefab: {fileID: 8018461986444478399, guid: 3287c844c3f81bb449efbab412e07ede, type: 3}
+    _fishAmount: 15
+  _fishAdditionalScale: 3.333333
+  _spawnBordersOffset: 2
+  _spawnCenterOffset: 4
+  _minTimeBetweenUpdates: 7
+  _maxTimeBetweenUpdates: 15
 --- !u!1001 &130387530756073392
 PrefabInstance:
   m_ObjectHideFlags: 0

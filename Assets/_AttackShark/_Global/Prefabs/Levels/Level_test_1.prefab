@@ -90,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7903448706205971041}
   - component: {fileID: 7903448706205971040}
+  - component: {fileID: 7773190416034454858}
   m_Layer: 0
   m_Name: Level_test_1
   m_TagString: Untagged
@@ -135,12 +136,35 @@ MonoBehaviour:
     - _targetFish: {fileID: 11400000, guid: 9ece7251b75b2594389351790016d4a7, type: 2}
       _amountToEat: 3
   _shark: {fileID: 3579452321326597036}
+  _timeForLevel: 20
   _swimZone: {fileID: 7903448704892656138}
-  _shoals:
-  - {fileID: 3219581659268901590}
-  - {fileID: 901261212227292270}
-  - {fileID: 6174152650525961298}
+  _freeSwim: {fileID: 7773190416034454858}
   _borderView: {fileID: 4920220140569412617}
+--- !u!114 &7773190416034454858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7903448706205971042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b4d93d39f271c43a83eab7016433d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _swimZone: {fileID: 7903448704892656138}
+  _fishVariants:
+  - fishPrefab: {fileID: -4041638919026788914, guid: dc8d8b94d5b232c48898dc6ba13d796f, type: 3}
+    _fishAmount: 20
+  - fishPrefab: {fileID: 114659863616513800, guid: 37d57f69a1a528a4fa7c786f64b327ef, type: 3}
+    _fishAmount: 20
+  - fishPrefab: {fileID: -1137634915713052595, guid: 119f5f4af4536c548b7994cebbcceab9, type: 3}
+    _fishAmount: 20
+  _fishAdditionalScale: 3.333333
+  _spawnBordersOffset: 2
+  _spawnCenterOffset: 4
+  _minTimeBetweenUpdates: 7
+  _maxTimeBetweenUpdates: 15
 --- !u!1001 &407624042002544427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,17 +227,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 660278328478743371, guid: 5e3c60406c743b5468e78ac88c95951a, type: 3}
   m_PrefabInstance: {fileID: 407624042002544427}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &901261212227292270 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 660278328478743365, guid: 5e3c60406c743b5468e78ac88c95951a, type: 3}
-  m_PrefabInstance: {fileID: 407624042002544427}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ee7704c3cef40498551a4d186f7544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2385911351795263947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,17 +289,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8408935891752895899, guid: 08a5e294ca21e7a409e9b962bb21de34, type: 3}
   m_PrefabInstance: {fileID: 2385911351795263947}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6174152650525961298 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8408935891752895897, guid: 08a5e294ca21e7a409e9b962bb21de34, type: 3}
-  m_PrefabInstance: {fileID: 2385911351795263947}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ee7704c3cef40498551a4d186f7544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5452100921238398059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -349,17 +351,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7424043870061285051, guid: 563b3e926a5873a428148ce35544a1c3, type: 3}
   m_PrefabInstance: {fileID: 5452100921238398059}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3219581659268901590 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7424043870061285053, guid: 563b3e926a5873a428148ce35544a1c3, type: 3}
-  m_PrefabInstance: {fileID: 5452100921238398059}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ee7704c3cef40498551a4d186f7544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6428901723076879559
 PrefabInstance:
   m_ObjectHideFlags: 0

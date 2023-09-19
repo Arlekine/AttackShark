@@ -12,15 +12,14 @@ Material:
   m_ValidKeywords:
   - _CAUSTICSMODE_2D
   - _COLORMODE_COLORS
-  - _DYNAMIC_EFFECTS_ON
   - _EDGEFADE_ON
   - _FOAM_ON
   - _FOAM_WHITECAPS_ON
   - _NORMALSMODE_SINGLE
-  - _REFLECTIONMODE_CUBEMAP
   - _SCATTERING_ON
   m_InvalidKeywords:
   - _DISPLACEMENTMODE_OFF
+  - _REFLECTIONMODE_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -161,7 +160,7 @@ Material:
     - _DoubleSided: 0
     - _DstBlend: 0
     - _DynamicDisplacement: 0
-    - _DynamicEffects: 1
+    - _DynamicEffects: 0
     - _DynamicFoam: 1
     - _DynamicNormal: 4
     - _EdgeFade: 1
@@ -203,7 +202,7 @@ Material:
     - _ReflectionFresnel: 16
     - _ReflectionFresnelNormal: 0.264
     - _ReflectionIntensity: 0.5
-    - _ReflectionMode: 1
+    - _ReflectionMode: 0
     - _ReflectionRoughness: 0.1
     - _Scattering: 1
     - _ScatteringIntensity: 1
