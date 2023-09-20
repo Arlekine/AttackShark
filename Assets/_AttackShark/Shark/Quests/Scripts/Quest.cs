@@ -69,7 +69,12 @@ public class Quest
 
     private void OnEated(Eatable eatable)
     {
-        var fishData = eatable.GetComponent<Fish>().Data;
+        var fish = eatable.GetComponent<IFishDataHolder>();
+
+        if (fish == null)
+            return;
+        
+        var fishData = fish.FishData;
 
         var target = _targets.Find(f => f.TargetFish == fishData);
 

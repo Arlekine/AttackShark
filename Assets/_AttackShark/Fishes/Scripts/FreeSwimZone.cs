@@ -10,10 +10,10 @@ namespace FreshwaterFish
         [Serializable]
         private class FishVariant
         {
-            [SerializeField] private FishMovement fishPrefab;
+            [SerializeField] private FishData _fish;
             [SerializeField] private int _fishAmount = 5;
 
-            public FishMovement FishPrefab => fishPrefab;
+            public FishData Fish => _fish;
             public int FishAmount => _fishAmount;
         }
 
@@ -51,8 +51,8 @@ namespace FreshwaterFish
 
                     pos.y = _swimZone.GetSwimHeight();
 
-                    var newFish = Instantiate(fishVariant.FishPrefab, pos, Quaternion.identity);
-                    newFish.transform.parent = transform;
+                    var newFish = fishVariant.Fish.CreateFish(transform).FishMovement;
+                    newFish.transform.position = pos;
                     newFish.transform.localScale *= _fishAdditionalScale;
 
                     newFish.Init(_swimZone);

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GrowingProgressView : MonoBehaviour
 {
-    [SerializeField] private Slider _slider;
+    [SerializeField] private Image _slider;
 
     private Grower _currentGrower;
 
@@ -17,7 +17,7 @@ public class GrowingProgressView : MonoBehaviour
         _currentGrower.PointsAdded += OnPointsAdded;
         _currentGrower.LevelUp += OnLevelUp;
 
-        _slider.value = _currentGrower.CurrentPointsProgress;
+        _slider.fillAmount = _currentGrower.CurrentPointsProgress;
     }
 
     public void Clear()
@@ -30,11 +30,11 @@ public class GrowingProgressView : MonoBehaviour
 
     private void OnPointsAdded(int currentPoints)
     {
-        _slider.value = _currentGrower.CurrentPointsProgress;
+        _slider.fillAmount = _currentGrower.CurrentPointsProgress;
     }
 
     private void OnLevelUp(int levelIndex, Grower.GrowLevel level)
     {
-        _slider.value = _currentGrower.IsMaxLevel ? 1f : _currentGrower.CurrentPointsProgress;
+        _slider.fillAmount = _currentGrower.IsMaxLevel ? 0f : _currentGrower.CurrentPointsProgress;
     }
 }

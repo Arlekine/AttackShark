@@ -4808,7 +4808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e69f6825eba014f8d257116697abbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleOffset: 5.5
+  _scaleOffset: 6
   _zScale: 3
 --- !u!198 &2121246174171529535
 ParticleSystem:

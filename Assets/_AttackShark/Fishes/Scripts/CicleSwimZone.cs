@@ -14,9 +14,9 @@ namespace FreshwaterFish
             return new Vector3(transform.position.x, _swimHeight, transform.position.z);
         }
 
-        public override Vector3 ClampHorizontalPosition(Vector3 position)
+        public override Vector3 ClampHorizontalPosition(Vector3 position, float borderOffset = 0f)
         {
-            return MathfExtetntions.ClampInCircle(position, transform.position, _zoneRadius);
+            return MathfExtetntions.ClampInCircle(position, transform.position, _zoneRadius - borderOffset);
         }
 
         public float ZoneRadius => _zoneRadius;

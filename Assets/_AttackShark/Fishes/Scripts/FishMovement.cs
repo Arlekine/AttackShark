@@ -83,7 +83,7 @@ namespace FreshwaterFish
                 _animator.speed = 1f;
             }
 
-            _goalPosition = _swimZone.ClampHorizontalPosition(_goalPosition);
+            _goalPosition = _swimZone.ClampHorizontalPosition(_goalPosition, _fishLevel);
             Vector3 direction = _goalPosition + localAvoidance - this.transform.position;
 
             _rigidbody.MovePosition(transform.position + transform.forward * Time.deltaTime * (_speed + additionalSpeed));
@@ -91,6 +91,8 @@ namespace FreshwaterFish
 
             BalanceHeight();
             BalanceAngles();
+
+            _rigidbody.position = _swimZone.ClampHorizontalPosition(_rigidbody.position);
 
             /*transform.Translate(0, 0, Time.deltaTime * (_speed + additionalSpeed));
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), _rotationLerpParameter * Time.deltaTime);*/

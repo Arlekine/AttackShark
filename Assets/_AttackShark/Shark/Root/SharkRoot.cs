@@ -10,8 +10,14 @@ public class SharkRoot : MonoBehaviour
     [SerializeField] private Grower _grower;
     [SerializeField] private SharkMove _sharkMove;
     [SerializeField] private FishHazard _fishHazard;
+    [SerializeField] private GrowingProgressView _growingProgressView;
+    [SerializeField] private SharkHazardTrigger _sharkHazardsTrigger;
+
+    [Header("FX")]
     [SerializeField] private ParticleSystem _levelUpFX;
     [SerializeField] private EatingEffect _eatingEffect;
+
+    [Header("Sound")]
     [SerializeField] private SoundPlayer _eatingSound;
     [SerializeField] private SoundPlayer _growingSound;
 
@@ -37,6 +43,8 @@ public class SharkRoot : MonoBehaviour
         _grower.SetLevel(0);
         _eater.Init(_eaterCondition);
 
+        _growingProgressView.SetGrower(_grower);
+
         _grower.LevelUp += OnLevelUp;
         _eater.Eated += OnEated;
     }
@@ -61,6 +69,9 @@ public class SharkRoot : MonoBehaviour
         _eatingEffect.SetFXScaleNormalized(_grower.CurrentGrowthProgress);
         _cameraControl.SetCameraOffsetNormalized(_grower.CurrentGrowthProgress);
         _sharkMove.SetMaxSpeedNormalized(_grower.CurrentGrowthProgress);
+
+        if (_grower.IsMaxLevel)
+            _sharkHazardsTrigger.gameObject.SetActive(false);
 
         SharkLevelUp?.Invoke(currentLevelIndex);
     }

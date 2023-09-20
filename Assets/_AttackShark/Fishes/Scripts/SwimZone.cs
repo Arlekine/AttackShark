@@ -7,6 +7,6 @@ namespace FreshwaterFish
         public abstract float GetSwimHeight();
         public abstract Vector3 GetZoneCenter();
 
-        public abstract Vector3 ClampHorizontalPosition(Vector3 position);
+        public abstract Vector3 ClampHorizontalPosition(Vector3 position, float borderOffset = 0f);
     }
 }

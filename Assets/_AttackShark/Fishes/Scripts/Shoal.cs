@@ -7,7 +7,7 @@ namespace FreshwaterFish {
 
 	public class Shoal : MonoBehaviour
 	{
-        [SerializeField] private FishMovement fishPrefab;
+        [SerializeField] private FishData _fish;
 
         [Space]
         [SerializeField] private float _spawnRadius = 1f;
@@ -38,8 +38,8 @@ namespace FreshwaterFish {
 
                 pos.y = _swimZone.GetSwimHeight();
 
-				var newFish = Instantiate(fishPrefab, pos, Quaternion.identity);
-                newFish.transform.parent = transform;
+                var newFish = _fish.CreateFish(transform).FishMovement;
+                newFish.transform.position = pos;
                 newFish.transform.localScale *= _fishAdditionalScale;
 
                 newFish.Init(_swimZone);
@@ -101,6 +101,12 @@ namespace FreshwaterFish {
 
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, _swimRadius);
+        }
+
+        private void OnValidate()
+        {
+            if (_fish != null)
+                gameObject.name = $"FishSpawner_{_fish.name}_{_fishAmount}";
         }
     }
 }

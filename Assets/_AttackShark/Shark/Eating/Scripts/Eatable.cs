@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class Eatable : MonoBehaviour
 {
-    public Action Deactivated;
+    public Action Eated;
 
     [SerializeField] private int _growPoints;
 
@@ -16,6 +16,6 @@ public class Eatable : MonoBehaviour
     public void Deactivate()
     {
         GetComponent<Collider>().enabled = false;
-        Deactivated?.Invoke();
+        Eated?.Invoke();
     }
 }

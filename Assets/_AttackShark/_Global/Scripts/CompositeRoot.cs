@@ -40,7 +40,6 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private Joystick _joystick;
     [SerializeField] private QuestView _questView;
     [SerializeField] private Button _restartLevel;
-    [SerializeField] private GrowingProgressView _growingProgressView;
     [SerializeField] private TimerView _timerView;
 
     [Header("UI-After Level")]
@@ -118,7 +117,6 @@ public class CompositeRoot : MonoBehaviour
 
         _currentLevel.Quest.TargetCompleted += OnQuestTargetComplete;
         _questView.Show(_currentLevel.Quest);
-        _growingProgressView.SetGrower(_currentLevel.Shark.Grower);
         _waterLoopAudioSource.DOFade(_waterLoop.Volume, _waterLoopFadeTime);
 
         _timer.StartTimer(_currentLevel.TimeForLevel, LevelFailed);
@@ -158,7 +156,6 @@ public class CompositeRoot : MonoBehaviour
         Haptic.VibrateHeavy();
         _levelFinal.Play();
         _waterLoopAudioSource.DOFade(0f, _waterLoopFadeTime);
-        _growingProgressView.Clear();
 
         _currentLevel.Quest.TargetCompleted -= OnQuestTargetComplete;
 

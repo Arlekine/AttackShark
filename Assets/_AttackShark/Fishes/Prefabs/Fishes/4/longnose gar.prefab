@@ -430,7 +430,7 @@ MonoBehaviour:
   _rotationLerpParameter: 1
   _size: 1
   _fishLevel: 4
-  _yOffset: -0.6
+  _yOffset: -0.8
   _runawayDistance: 1
   _obstaclesLayer:
     serializedVersion: 2
@@ -484,7 +484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c088ec62f5390ab4bbe73436f3126ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 5c8bfe3dc06671c4fbee13d88d173e83, type: 2}
   _fishMovement: {fileID: 114132725089919958}
   _eatable: {fileID: 6655383961439264119}
 --- !u!114 &-5261158886561300970

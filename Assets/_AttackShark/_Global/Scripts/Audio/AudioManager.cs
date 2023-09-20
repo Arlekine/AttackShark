@@ -34,6 +34,7 @@ public static class AudioManager
         source.loop = loop;
         source.clip = clip;
         source.Play();
+        source.gameObject.name = clip.name;
 
         _freeSources.Remove(source);
         _busySources.Add(source);
